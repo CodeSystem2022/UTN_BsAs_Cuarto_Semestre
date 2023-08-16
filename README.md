@@ -21,3 +21,4 @@ Integrantes:
 - Fernando Barrionuevo    
        Rasta07
     
+![SCRUMMASTER](https://github.com/CodeSystem2022/UTN_BsAs_Cuarto_Semestre/assets/105835509/8d24e3a8-509b-4ad7-82d2-50cc82e2382e)
