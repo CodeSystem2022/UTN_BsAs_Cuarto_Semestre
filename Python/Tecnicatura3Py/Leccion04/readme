@@ -1,0 +1,7 @@
+1.1 Instalación de Postgresql en window, investigar la instalación en otros sistemas
+1.2 Creamos un base de datos llamada prueba_bd y cargamos una tabla con sus columnas
+1.3 Consultas con código Query en Postgresql Parte 1
+1.4 Consultas con código Query en Postgresql Parte 2
+1.5 Instalación del módulo Postgresql en PyCharm
+1.6 Conexión hacia la base de datos en Python con el método fetchall()
+1.7 Cerramos la conexión y la consulta
