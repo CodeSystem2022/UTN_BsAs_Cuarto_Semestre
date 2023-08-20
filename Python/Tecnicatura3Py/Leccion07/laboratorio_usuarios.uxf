@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLPackage</id>
+    <coordinates>
+      <x>20</x>
+      <y>20</y>
+      <w>910</w>
+      <h>590</h>
+    </coordinates>
+    <panel_attributes>laboratorio_usuarios
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>340</y>
+      <w>240</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>CursorDelPool
+--
+-conn: String
+-cursor: String
+--
++__init__(self)
++__enter__(self)
++__exit__(self)
+--
+Responsabilidades:
+Administrar el objeto conexion y 
+cursor obtenidos a partir del pool 
+de conexiones. Los métodos enter y
+exit son la implementación del uso
+de 'with' para trabajar con el cursor.
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>40</x>
+      <y>50</y>
+      <w>240</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>Conexion
+--
+_-DATABASE: String_
+_-USERNAME: String_
+_-PASSWORD: String_
+_-DB_PORT: String_
+_-HOST: String_
+_-MIN_CON: int_
+_-MAX_CON: int_
+_-pool: Pool_
+--
+_+obtenerPool(cls): Pool_
+_+obtenerConexion(cls): Connection_
+_+liberarConexion(cls, conexion)_
+_+cerrarConexiones(cls)_
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>390</x>
+      <y>340</y>
+      <w>240</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>UsuarioDao
+--
+_-SELECCIONAR: String_
+_-INSERTAR: String_
+_-ACTUALIZAR: String_
+_-ELIMINAR: String_
+--
+_+seleccionar(cls): List&lt;Usuario&gt;_
+_+insertar(cls, usuario)_
+_+actualizar(cls, usuario)_
+_+eliminar(cls, usuario)_
+--
+Responsabilidades:
+Realizar las operaciones CRUD 
+sobre la entidad Usuario 
+(tabla usuario)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>60</y>
+      <w>240</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>Usuario
+--
+-id_usuario: int
+-username: String
+-password: String
+--
++__str__(): String
++getters y setters de los atributos
+...
+--
+Responsabilidades:
+Crear objetos de entidad Usuario</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>670</x>
+      <y>80</y>
+      <w>240</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>MenuAppUsuario
+--
+- Contiene un menú con 5 opciones
+
+1) Listar usuarios.
+2) Agregar usuario.
+3) Actualizar usuario.
+4) Eliminar usuario.
+5) Salir.
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>660</x>
+      <y>380</y>
+      <w>240</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>logger_base
+--
++logger: logging
+--
+Responsabilidades:
+Configuración de login para toda
+la aplicación</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>140</x>
+      <y>280</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>450</y>
+      <w>140</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>120.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>290</y>
+      <w>30</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>610</x>
+      <y>160</y>
+      <w>80</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>60.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>
