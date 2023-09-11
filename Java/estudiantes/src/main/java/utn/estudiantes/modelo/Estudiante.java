@@ -9,12 +9,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-
 @Entity
-//boilerplate - Repetitivo
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class Estudiante {
     @Id
@@ -24,4 +22,5 @@ public class Estudiante {
     private String apellido;
     private String telefono;
     private String email;
+
 }
