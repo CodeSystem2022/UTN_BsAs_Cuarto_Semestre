@@ -13,3 +13,21 @@ if bool(' '):
     print('Es true')
 else:
     print('Es false')
+
+# mchalin (#57)
+# Con ciclo while, es false cuando es 0, true para los demás valores
+variable = 0
+while variable:
+    print(variable)
+    print('Es true')
+    break
+else:
+    print('Es false')
+
+variable = 1
+while variable:
+    print(variable)
+    print('Es true')
+    break
+else:
+    print('Es false')
