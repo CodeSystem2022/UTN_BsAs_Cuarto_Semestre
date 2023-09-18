@@ -1,11 +1,12 @@
-# Profundizando en el tipo String
-# Concatenación automática en Python
 import math
 
-variable = ' Adios'
-mensaje = 'Hola ''Alumnos' + variable
-mensaje += ', Terminamos'
-print(mensaje)
+# Profundizando en el tipo String
+# Concatenacion automatica en Python
 
-# Usamos la clase help para ayuda o documentación (built-in)
-help(math.isnan)
+variable = ' Adios'
+mensaje = 'Hola'' Alumnos' + variable
+mensaje += ', Terminamos'
+#print(mensaje)
+
+# Usamos la clase help para ayuda o documentacion (built-in)
+help(math)
