@@ -49,8 +49,31 @@ const displayCart = () => {
         </div> 
 	`;
         modalContainer.append(modalBody);
+
+        //delete
+        const deleteProduct = modalBody.querySelector("delete-product");
+
+        deleteProduct.addEventListener("click", ()=> {
+          deleteCartProduct(product.id);
+        })
     	});
+
+      //modal footer
+      const total = cart.reduce((acc, el) => acc + el.price * el.quanty, 0)
+
+      const modalFooter = document.createElement("div");
+      modalFooter.className = "modal-footer";
+      modalFooter.innerHTML = `
+      <div class"total-price">Total: ${total}</div>
+      `;
+      modalContainer.append(modalFooter);
 };
 
 cartBtn.addEventListener("click", displayCart);
 
+const deleteCartProduct =(id) => {
+  const foundId = cart.findIndex((element)=> element.id === id);
+  console.log(foundId);
+  cart.splice(foundId, 1);
+  displayCart();
+}
