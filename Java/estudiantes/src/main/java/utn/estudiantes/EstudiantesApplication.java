@@ -11,6 +11,8 @@ import utn.estudiantes.servicio.EstudianteServicio;
 @SpringBootApplication
 public class EstudiantesApplication implements CommandLineRunner {
 
+
+    
     @Autowired
     private EstudianteServicio estudianteServicio;
     private static final Logger logger = LoggerFactory.getLogger(EstudiantesApplication.class);
