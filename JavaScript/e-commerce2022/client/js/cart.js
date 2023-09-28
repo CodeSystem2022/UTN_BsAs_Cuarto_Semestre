@@ -1,6 +1,7 @@
 const modalContainer = document.getElementById("modal-container");
 const modalOverlay = document.getElementById("modal-overlay");
 const cartBtn = document.getElementById("cart-btn");
+const cartCounter = document.getElementById("cart-counter");
 
 const displayCart = () => {
     // Vaciamos el contenedor
@@ -29,9 +30,9 @@ const displayCart = () => {
 
     modalContainer.append(modalHeader);
 
-   // Modal body
-   if(cart.length > 0){ 
-   cart.forEach((product) => {
+    // Modal body
+    if (cart.length > 0) {
+    cart.forEach((product) => {
         const modalBody = document.createElement("div");
         modalBody.className = "modal-body";
         modalBody.innerHTML = `
@@ -48,69 +49,66 @@ const displayCart = () => {
             <div class="price">${product.price * product.quanty} $</div>
             <div class="delete-product">❌</div>
         </div> 
-	`;
+`;
         modalContainer.append(modalBody);
-
         const decrese = modalBody.querySelector(".quantity-btn-decrese");
-        decrese.addEventListener("click", () =>{
-            if (product.quanty !== 1){
-              product.quanty--;
-              displayCart();
+        decrese.addEventListener("click", () => {
+            if (product.quanty !== 1) {
+                product.quanty--;
+                displayCart();
+                displayCartCounter();
             }
-        
-    	});
+        });
 
-        const indecrese = modalBody.querySelector(".quantity-btn-increse");
-        increse.addEventListener("click", () =>{
-              product.quanty++;
-              displayCart();
-            
-        
-    	});
-// delete
-const deleteProduct = modalBody.querySelector(".delete-product");
+        const increse = modalBody.querySelector(".quantity-btn-increse");
+        increse.addEventListener("click", () => {
+            product.quanty++;
+            displayCart();
+            displayCartCounter();
+        });
 
-deleteProduct.addEventListener("click",() =>{
- deleteCartProduct(product.id);
-})
+        // delete product
+        const deleteProduct = modalBody.querySelector(".delete-product");
+        deleteProduct.addEventListener("click", () => {
+            deleteCartProduct(product.id);
+        })
+
     });
 
-    // modal fotter
-    const total= cart.reduce((acc,el)=> acc + el.price * el.quanty,0);
 
+    // modal footer
+    const total = cart.reduce((acc, el) => acc + el.price * el.quanty, 0);
     const modalFooter = document.createElement("div");
     modalFooter.className = "modal-footer";
-    modalFooter.innerHTML=
-    <div class="total-price">Total: ${total}</div>
-
-;
-modalContainer.append(modalFooter);
-
-}else{
-    const modalText = document.createElement("h2");
-    modalText.className = "modal-body";
-    modalText.innerText= "your cart is empty";
-    modalContainer.append(modalText);
-}
+    modalFooter.innerHTML = `
+    <div class="total-price">Total: $ ${total}</div>
+    `;
+    modalContainer.append(modalFooter);
+    } else {
+        const modalText = document.createElement("h2");
+        modalText.className = "modal-body";
+        modalText.innerText = "Your cart is empty";
+        modalContainer.append(modalText);
+    }
 };
+
 cartBtn.addEventListener("click", displayCart);
 
-const deleteCartProduct = ()=> {
-    const foundId= cart.findIndex((element) => element.id === id);
+const deleteCartProduct = (id) => {
+    const foundId = cart.findIndex((element) => element.id === id);
+    // console.log(foundId);
+    // console.log(cart[foundId]);
     cart.splice(foundId,1);
-    displayCart();ç
+    displayCart();
     displayCartCounter();
-};
-
-const displayCartCounter = ()=>{
-    const cartLength = cart.reduce((acc, el)=> acc + el.quanty,0);
-    if(cartLength > 0){
-    cartCounter.style.display = "block";
-    cartCounter.innerText = cartLength;
-
-
-    
-}   else{
-    cartCounter.style.display = "none"
 }
-};
+
+const displayCartCounter = () => {
+    const totalCartCounter = cart.reduce((acc, el) => acc + el.quanty, 0);
+    if (totalCartCounter > 0) {
+        cartCounter.style.display = "block";
+        cartCounter.innerText = totalCartCounter;    
+    } else {
+        cartCounter.style.display = "none";
+    }
+}
