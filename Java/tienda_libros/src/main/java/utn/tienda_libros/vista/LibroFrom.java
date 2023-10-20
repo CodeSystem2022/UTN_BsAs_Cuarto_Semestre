@@ -5,14 +5,19 @@ import org.springframework.stereotype.Component;
 import utn.tienda_libros.servicio.LibroServicio;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 
 @Component
 public class LibroFrom extends JFrame {
     LibroServicio libroServicio;
     private JPanel panel;
-    private Jtable tablaLibros;
-    private DefaultTableModel tablaModeloLibros; 
+    private JTable tablaLibros;
+    private JTextField libroTexto;
+    private JTextField AutorTexto;
+    private JTextField precioTexto;
+    private JTextField existenciasTexto;
+    private DefaultTableModel tablaModeloLibros;
 
     @Autowired
     public LibroFrom(LibroServicio libroServicio){
@@ -35,13 +40,13 @@ public class LibroFrom extends JFrame {
     }
     private void createUIComponents(){
         this.tablaModeloLibros = new DefaultTableModel(0,5);
-        String[] cabecera = {"Id","Libro","Autor","Precio","Existencias"};
+        String[] cabecera = {"Id","Libro", "Autor", "Precio", "Existencias"};
         this.tablaModeloLibros.setColumnIdentifiers(cabecera);
         //Instanciar el objeto de Jtable
         this.tablaLibros = new JTable(tablaModeloLibros);
         listarLibros();
             }
-    private void ListarLibros();
+    private void listarLibros(){
         //Limpiar la tabla
         tablaModeloLibros.setRowCount(0);
         //Obtener los libros de la BD
@@ -54,7 +59,7 @@ public class LibroFrom extends JFrame {
                     libro.getNombreLibro(),
                     libro.getAutor(),
                     libro.getPrecio(),
-                    libro.getExixtencias()
+                    libro.getExistencias()
                };  
                this.tablaModeloLibros.addRow(renglonLibro);
             });
