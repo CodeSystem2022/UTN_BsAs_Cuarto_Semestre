@@ -8,12 +8,15 @@ import utn.tienda_libros.servicio.LibroServicio;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 @Component
 public class LibroFrom extends JFrame {
     LibroServicio libroServicio;
     private JPanel panel;
     private JTable tablaLibros;
+    private JTextField idTexto;
     private JTextField libroTexto;
     private JTextField autorTexto;
     private JTextField precioTexto;
@@ -28,6 +31,15 @@ public class LibroFrom extends JFrame {
         this.libroServicio = libroServicio;
         iniciarForma();
         agregarButton.addActionListener(e -> agregarLibro());
+        tablaLibros.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                cargarLibroSeleccionado();
+            }
+
+
+        });
     }
 
 
@@ -72,7 +84,20 @@ public class LibroFrom extends JFrame {
 
 
     }
+    private void cargarLibroSeleccionado() {
+        // Los indices de las columnas comienzan en 0
+        var renglon = tablaLibros.getSelectedRow();
+        if (renglon != -1) {
+            var idLibro = tablaLibros.getModel().getValueAt(renglon,0).toString();
 
+            // TODO: Borrar!
+            var libro = libroServicio.buscarLibroPorId(Integer.parseInt(idLibro));
+            System.out.println(libro);
+            //
+
+            
+        }
+    }
     private void limpiarFormulario() {
         libroTexto.setText("");
         autorTexto.setText("");
@@ -85,6 +110,8 @@ public class LibroFrom extends JFrame {
     }
 
     private void createUIComponents() {
+        idTexto = new JTextField("");
+        idTexto.setVisible(false);
         this.tablaModeloLibros = new DefaultTableModel(0, 5);
         String[] cabecera = {"Id", "Libro", "Autor", "Precio", "Existencias"};
         this.tablaModeloLibros.setColumnIdentifiers(cabecera);
