@@ -40,6 +40,9 @@ public class LibroFrom extends JFrame {
 
 
         });
+
+        modificarButton.addActionListener(e -> modificarLibro());
+            
     }
 
 
@@ -88,15 +91,42 @@ public class LibroFrom extends JFrame {
         // Los indices de las columnas comienzan en 0
         var renglon = tablaLibros.getSelectedRow();
         if (renglon != -1) {
-            var idLibro = tablaLibros.getModel().getValueAt(renglon,0).toString();
+            //var idLibro = tablaLibros.getModel().getValueAt(renglon,0).toString();
 
             // TODO: Borrar!
-            var libro = libroServicio.buscarLibroPorId(Integer.parseInt(idLibro));
-            System.out.println(libro);
+           // var libro = libroServicio.buscarLibroPorId(Integer.parseInt(idLibro));
+           // System.out.println(libro);
             //
-
-            
+            String idlibro=tablaLIbros.getModel().getValueAt(renglon, 0).toString();
+            idTexto.setText(idLibro);
+            String nombreLibro = 
+                    tablaLibros.getModel().getValueAt(renglon, 1).toString();
+            libroTexto.setText(nombreLibro);
+      	    String autor = 
+                    tablaLibros.getModel().getValueAt(renglon, 2).toString();
+            autorTexto.setText(autor);
+	    String precio = 
+                    tablaLibros.getModel().getValueAt(renglon, 3).toString();
+            precioTexto.setText(precio);
+            String existencias = 
+                    tablaLibros.getModel().getValueAt(renglon, 4).toString();
+            existenciasTexto.setText(existencias);
         }
+    }
+    private void modificarLibro(){
+        if(this.idTexto.equals("")){
+            mostrarMensaje("Debes seleccionar un registro en la tabla");
+        }
+        else {
+             //Verificamos que nombre del libro no sea nulo
+             if(libroTexto.getText().equals("")){
+                 mostrarMensaje("Digite el nombre del libro");
+                 libroTexto.requestFocusInWindow();
+                 return;
+             }
+             
+         }
+
     }
     private void limpiarFormulario() {
         libroTexto.setText("");
