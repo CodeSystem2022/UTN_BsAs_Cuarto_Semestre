@@ -42,7 +42,8 @@ public class LibroFrom extends JFrame {
         });
 
         modificarButton.addActionListener(e -> modificarLibro());
-            
+        eliminarButton.addActionListener(e -> eliminarLibro());
+
     }
 
 
@@ -91,13 +92,13 @@ public class LibroFrom extends JFrame {
         // Los indices de las columnas comienzan en 0
         var renglon = tablaLibros.getSelectedRow();
         if (renglon != -1) {
-            //var idLibro = tablaLibros.getModel().getValueAt(renglon,0).toString();
+            var idLibro = tablaLibros.getModel().getValueAt(renglon,0).toString();
 
             // TODO: Borrar!
-           // var libro = libroServicio.buscarLibroPorId(Integer.parseInt(idLibro));
-           // System.out.println(libro);
+            //var libro = libroServicio.buscarLibroPorId(Integer.parseInt(idLibro));
+            //System.out.println(libro);
             //
-            String idlibro=tablaLIbros.getModel().getValueAt(renglon, 0).toString();
+            String idlibro=tablaLibros.getModel().getValueAt(renglon, 0).toString();
             idTexto.setText(idLibro);
             String nombreLibro = 
                     tablaLibros.getModel().getValueAt(renglon, 1).toString();
@@ -124,9 +125,33 @@ public class LibroFrom extends JFrame {
                  libroTexto.requestFocusInWindow();
                  return;
              }
-             
+             // Llenamos el objeto libro a actualizar
+            int idLibro= Integer.parseInt(idTexto.getText());
+             var nombreLibro= libroTexto.getText();
+             var autor = autorTexto.getText();
+             var precio = Double.parseDouble(precioTexto.getText());
+             var existencias= Integer.parseInt(existenciasTexto.getText());
+             var libro = new Libro(idLibro,nombreLibro,autor,precio,existencias);
+             libroServicio.guardarLibro(libro);
+             mostrarMensaje("Se modifico el libro...");
+             limpiarFormulario();
+             listarLibros();
          }
 
+    }
+
+    private void eliminarLibro(){
+        var renglon= tablaLibros.getSelectedRow();
+        if(renglon != -1){
+            String idLibro=
+                    tablaLibros.getModel().getValueAt(renglon,0).toString();
+            var libro = new Libro();
+            libro.setIdLibro(Integer.parseInt(idLibro));
+            libroServicio.eliminarLibro(libro);
+            mostrarMensaje("Libro " + idLibro+ "ELIMINADO");
+            limpiarFormulario();
+            listarLibros();
+        }
     }
     private void limpiarFormulario() {
         libroTexto.setText("");
