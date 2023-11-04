@@ -188,7 +188,7 @@
       <component id="67b9b" class="javax.swing.JButton" binding="modificarButton" default-binding="true">
         <constraints>
           <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="250" height="100"/>
+            <preferred-size width="250" height="25"/>
           </grid>
         </constraints>
         <properties>
@@ -198,7 +198,7 @@
       <component id="ab9d0" class="javax.swing.JButton" binding="agregarButton" default-binding="true">
         <constraints>
           <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="250" height="100"/>
+            <preferred-size width="250" height="25"/>
           </grid>
         </constraints>
         <properties>
@@ -208,7 +208,7 @@
       <component id="e0382" class="javax.swing.JButton" binding="eliminarButton" default-binding="true">
         <constraints>
           <grid row="5" column="5" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="250" height="100"/>
+            <preferred-size width="250" height="25"/>
           </grid>
         </constraints>
         <properties>
