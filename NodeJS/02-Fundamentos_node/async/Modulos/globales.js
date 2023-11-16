@@ -1,4 +1,6 @@
 
+
+
 //console.log(setInterval);
 
 Let i = 0;
@@ -6,7 +8,7 @@ Let i = 0;
 Let intervalo = setInterval(() => {
     console.log('hola');
     if (i === 3) {
-        clearInterval(intervalo);
+        clearInterval(intervalo); //detenemos la funcion
     }
     i++;
 }, 1000);
