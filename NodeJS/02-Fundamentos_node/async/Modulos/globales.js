@@ -2,6 +2,7 @@
 //console.log(setInterval);
 
 Let i = 0;
+
 Let intervalo = setInterval(() =>{
     console.log('hola');
     if (i === 3) {
