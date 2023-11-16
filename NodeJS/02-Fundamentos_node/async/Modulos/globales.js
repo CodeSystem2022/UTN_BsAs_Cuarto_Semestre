@@ -3,7 +3,7 @@
 
 Let i = 0;
 
-Let intervalo = setInterval(() =>{
+Let intervalo = setInterval(() => {
     console.log('hola');
     if (i === 3) {
         clearInterval(intervalo);
@@ -19,6 +19,6 @@ console.log(process);
 
 console.log(_dirname);
 
-global,miVariable = 'mi variable global';
+global.miVariable = 'mi variable global';
 console.log(miVariable);
 
